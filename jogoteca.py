@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect #Importa função flask da biblioteca flask
+from flask import Flask, render_template, request, redirect, session, flash #Importa função flask da biblioteca flask
 
 class Jogo:
     def __init__(self, nome, categoria, console):
@@ -12,6 +12,7 @@ jogo3 = Jogo('Mortal Kombat', 'Luta', 'PS2')
 lista = [jogo1, jogo2, jogo3]
 
 app = Flask(__name__) #Atribui a aplicação para a variável app
+app.secret_key = 'alura'
 
 @app.route('/') #Cria nova rota
 def index():
@@ -39,25 +40,13 @@ def login():
 @app.route('/autenticar', methods=['POST',])
 def autenticar():
     if 'alohomora' == request.form['senha']:
+        #Salva nome do usuário
+        session['usuario_logado'] = request.form['usuario']
+        #Alert 
+        flash(session['usuario_logado'] + ' logado com sucesso!')
         return redirect('/')
     else:
+        flash('Usuário não logado!')
         return redirect('/login')
 
 app.run(debug=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
