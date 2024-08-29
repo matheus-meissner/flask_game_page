@@ -4,6 +4,7 @@ app = Flask(__name__) #Atribui a aplicação para a variável app
 
 @app.route('/inicio') #Cria nova rota
 def ola():
-    return render_template('lista.html', titulo='Jogos') #Importa HTML, define variável
+    lista = ['Tetris', 'Skyrim', 'Crash']
+    return render_template('lista.html', titulo='Jogos', jogos=lista) #Importa HTML, define variável
 
 app.run()
