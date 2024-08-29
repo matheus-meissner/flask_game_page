@@ -16,4 +16,8 @@ def ola():
     lista = [jogo1, jogo2, jogo3]
     return render_template('lista.html', titulo='Jogos', jogos=lista) #Importa HTML, define variável
 
+@app.route('/novo')
+def novo():
+    return render_template('novo.html', titulo='Novo Jogo')
+
 app.run()
