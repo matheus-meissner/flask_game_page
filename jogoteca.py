@@ -74,4 +74,4 @@ def logout():
     flash('Logout efetuado com sucesso!')
     return redirect(url_for('index'))
 
-app.run(debug=True)
+app.run(debug=False)
